@@ -1,0 +1,44 @@
+country,indicator,action_area,cluster,score_by_indicator,score_by_action_area,score_by_cluster,overall_score,continent
+Angola,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,50.0,46.0,43.85,29.04,Africa
+Argentina,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,83.33,82.18,64.94,58.23,South America
+Bahamas,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,56.67,69.46,50.96,27.95,North America
+Barbados,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,33.33,59.37,42.52,27.83,North America
+Belize,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,53.33,54.6,51.07,23.09,North America
+Benin,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,73.33,63.26,47.08,29.97,Africa
+Bolivia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,63.33,55.41,32.7,24.81,South America
+Botswana,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,40.0,52.46,52.01,22.78,Africa
+Brazil,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,87.0,76.13,66.85,South America
+Burkina Faso,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,50.0,46.89,49.84,27.36,Africa
+Cameroon,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,26.67,29.09,19.97,21.48,Africa
+Chile,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,88.35,68.8,66.42,South America
+Colombia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,81.55,78.85,61.22,South America
+Costa Rica,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,80.0,78.54,62.02,37.49,North America
+Cote d'Ivoire,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,40.0,50.18,44.24,25.87,
+Dominican Republic,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,90.0,72.95,51.23,49.84,North America
+Ecuador,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,90.0,81.17,73.2,58.98,South America
+El Salvador,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,80.0,62.3,29.7,22.23,North America
+Gambia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,40.0,32.81,14.67,21.46,Africa
+Ghana,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,43.33,64.81,61.22,36.24,Africa
+Guatemala,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,50.0,61.24,37.33,40.71,North America
+Honduras,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,43.33,42.59,26.17,37.85,North America
+Jamaica,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,33.33,57.3,55.11,39.56,North America
+Kenya,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,73.33,63.01,50.53,35.91,Africa
+Liberia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,6.67,28.83,12.89,14.45,Africa
+Malawi,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,33.33,36.8,33.65,26.66,Africa
+Mexico,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,90.0,81.18,75.25,62.51,North America
+Morocco,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,36.67,51.43,35.4,35.41,Africa
+Mozambique,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,50.0,36.26,23.58,25.9,Africa
+Namibia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,46.67,52.94,23.67,22.1,Africa
+Nigeria,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,63.33,51.29,49.49,35.25,Africa
+Panama,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,79.13,62.47,53.23,North America
+Paraguay,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,73.97,62.97,51.94,South America
+Peru,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,73.33,76.52,58.91,55.31,South America
+Rwanda,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,43.33,55.28,55.37,30.86,Africa
+Senegal,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,13.33,49.31,54.36,26.82,Africa
+Sierra Leone,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,36.67,35.61,15.92,19.8,Africa
+South Africa,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,83.33,82.61,82.24,47.79,Africa
+Togo,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,50.0,51.26,40.06,23.23,Africa
+Trinidad and Tobago,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,70.0,67.67,38.73,24.49,North America
+Tunisia,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,60.0,65.34,51.14,35.67,Africa
+Uganda,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,93.33,61.59,52.91,36.09,Africa
+Uruguay,Capability (C): Digital Government*,Data Infrastructure,Governance Foundation,100.0,92.62,84.11,62.58,South America

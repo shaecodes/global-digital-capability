@@ -17,7 +17,7 @@ filtered_data = gdb_data[gdb_data['continent'] == continent_filter] if continent
 #Title
 st.markdown("""
     <h1 style='text-align: center; color: #1058a4;'>🌐 Global Digital Capability Dashboard</h1>
-    <hr style='border: 1px solid #0E76A8;' />
+    <hr style='border: 1px solid #1058a4;' />
 """, unsafe_allow_html=True)
 
 # KPI Header

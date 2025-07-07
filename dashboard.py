@@ -53,6 +53,31 @@ map_fig.update_layout(
 )
 st.plotly_chart(map_fig, use_container_width=True)
 
+highest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmax()]
+lowest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmin()]
+
+st.markdown("### 🏅 Notable Performers")
+
+col_high, col_low = st.columns(2)
+
+with col_high:
+    st.success(f"🌟 **Highest Scoring Country: {highest_score_row['country']}**")
+    st.markdown(f"""
+    - **Overall Score:** {highest_score_row['overall_score']}
+    - **Digital Government:** {highest_score_row['score_by_indicator']}
+    - **Data Infrastructure:** {highest_score_row['score_by_action_area']}
+    - **Governance Foundation:** {highest_score_row['score_by_cluster']}
+    """)
+
+with col_low:
+    st.error(f"⚠️ **Lowest Scoring Country: {lowest_score_row['country']}**")
+    st.markdown(f"""
+    - **Overall Score:** {lowest_score_row['overall_score']}
+    - **Digital Government:** {lowest_score_row['score_by_indicator']}
+    - **Data Infrastructure:** {lowest_score_row['score_by_action_area']}
+    - **Governance Foundation:** {lowest_score_row['score_by_cluster']}
+    """)
+    
 # Score Table
 st.markdown("### 📋 Country Score Table")
 

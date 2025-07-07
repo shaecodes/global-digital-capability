@@ -58,8 +58,8 @@ lowest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmin()]
 
 st.markdown("### 🏅 Notable Performers")
 
+# Top and Lowest Performers 
 col_high, col_low = st.columns(2)
-
 with col_high:
     st.success(f"🌟 **Highest Scoring Country: {highest_score_row['country']}**")
     st.markdown(f"""
@@ -68,7 +68,6 @@ with col_high:
     - **Data Infrastructure:** {highest_score_row['score_by_action_area']}
     - **Governance Foundation:** {highest_score_row['score_by_cluster']}
     """)
-
 with col_low:
     st.error(f"⚠️ **Lowest Scoring Country: {lowest_score_row['country']}**")
     st.markdown(f"""

@@ -53,12 +53,13 @@ map_fig.update_layout(
 )
 st.plotly_chart(map_fig, use_container_width=True)
 
+# Top and Lowest Performers 
+
 highest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmax()]
 lowest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmin()]
 
 st.markdown("### 🏅 Notable Performers")
 
-# Top and Lowest Performers 
 col_high, col_low = st.columns(2)
 with col_high:
     st.success(f"🌟 **Highest Scoring Country: {highest_score_row['country']}**")

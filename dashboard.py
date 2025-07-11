@@ -155,24 +155,23 @@ with c4:
 # Internet Access Section
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data_internet
 
-with col_bar:
-    internet_continent_df = (
-        filtered_data_internet
-        .dropna(subset=['continent'])
-        .groupby('continent')['score_by_indicator']
-        .mean()
-        .reset_index()
-    )
-    internet_bar_fig = px.bar(
-        internet_continent_df,
-        x='score_by_indicator',
-        y='continent',
-        orientation='h',
-        color='score_by_indicator',
-        color_continuous_scale='Blues',
-        labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'}
-    )
-    st.plotly_chart(internet_bar_fig, use_container_width=True)
+internet_continent_df = (
+    filtered_data_internet
+    .dropna(subset=['continent'])
+    .groupby('continent')['score_by_indicator']
+    .mean()
+    .reset_index()
+)
+internet_bar_fig = px.bar(
+    internet_continent_df,
+    x='score_by_indicator',
+    y='continent',
+    orientation='h',
+    color='score_by_indicator',
+    color_continuous_scale='Blues',
+    labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'}
+)
+st.plotly_chart(internet_bar_fig, use_container_width=True)
 
 scatter_infra_vs_internet = px.scatter(
     filtered_data_internet,

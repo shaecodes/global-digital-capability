@@ -148,7 +148,7 @@ with c4:
             'score_by_indicator': 'Digital Government Score'
         },
         color='overall_score',
-        color_continuous_scale='Blues'
+        color_continuous_scale='Blues',
         title="🌐 Digital Government Score vs Data Infrastructure"
     )
     scatter_fig.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))

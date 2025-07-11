@@ -171,7 +171,7 @@ with st.container():
         title="🔹 Internet Access: Data Infrastructure vs Digital Government",
         labels={
             'score_by_action_area': 'Data Infrastructure Score',
-            'score_by_indicator': 'Digital Government Score'
+            'score_by_indicator': 'Internet Access Score'
         },
         color='overall_score',
         color_continuous_scale='Blues'

@@ -152,6 +152,8 @@ with c4:
     )
     st.plotly_chart(scatter_fig, use_container_width=True)
 
+scatter_fig.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
+
 # Internet Access Section
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data_internet
 

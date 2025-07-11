@@ -143,7 +143,6 @@ with c4:
         x='score_by_action_area',
         y='score_by_indicator',
         hover_name='country',
-        title="🔎 Data Infrastructure vs Digital Government",
         labels={
             'score_by_action_area': 'Data Infrastructure Score',
             'score_by_indicator': 'Digital Government Score'
@@ -155,32 +154,6 @@ with c4:
 
 # Internet Access Section
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data_internet
-
-col_map, col_bar = st.columns(2)
-
-with col_map:
-    map_fig_internet = px.scatter_geo(
-        filtered_data_internet,
-        locations="country",
-        locationmode="country names",
-        color="score_by_indicator",
-        hover_name="country",
-        title="📡 Internet Access Map by Country",
-        size="score_by_indicator",
-        size_max=20,
-        projection="natural earth",
-        color_continuous_scale="Blues"
-    )
-    map_fig_internet.update_layout(
-        geo=dict(
-            showframe=False,
-            showcoastlines=True,
-            showland=True,
-            landcolor="LightGray"
-        ),
-        margin={"r": 0, "t": 0, "l": 0, "b": 0}
-    )
-    st.plotly_chart(map_fig_internet, use_container_width=True)
 
 with col_bar:
     internet_continent_df = (

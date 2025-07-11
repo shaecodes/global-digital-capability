@@ -194,5 +194,4 @@ with col2:
         title="Internet Access vs Data Infrastructure"
     )
     scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
-    scatter_infra_vs_internet.update_layout(margin={"r":0,"t":50,"l":0,"b":0})
     st.plotly_chart(scatter_infra_vs_internet, use_container_width=True)

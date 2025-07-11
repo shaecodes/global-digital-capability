@@ -161,7 +161,7 @@ with c4:
 
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data
 
-scatter_fig = px.scatter(
+scatter_fig_internet = px.scatter(
     filtered_data_internet,
     x='score_by_action_area',
     y='score_by_indicator',
@@ -174,4 +174,4 @@ scatter_fig = px.scatter(
     color='overall_score',
     color_continuous_scale='Blues'
 )
-st.plotly_chart(scatter_fig, use_container_width=True)
+st.plotly_chart(scatter_fig_internet, use_container_width=True)

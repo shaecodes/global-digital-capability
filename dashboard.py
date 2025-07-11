@@ -6,6 +6,7 @@ import plotly.graph_objects as go
 st.set_page_config(layout="wide", page_title="Global Digital Capability Dashboard")
 
 gdb_data = pd.read_csv("digital_government.csv")
+gdb_data_internet = pd.read_csv("internet_access.csv")
 
 #Sidebar
 st.sidebar.header("🌍 Filters")

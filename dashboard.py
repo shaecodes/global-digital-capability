@@ -200,3 +200,44 @@ with col_bar:
         labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'}
     )
     st.plotly_chart(internet_bar_fig, use_container_width=True)
+
+st.subheader("📍 Internet Access vs Data Infrastructure (Scatter Map)")
+
+scatter_map_data = filtered_data_internet.copy()
+
+# Drop countries without data in either field
+scatter_map_data = scatter_map_data.dropna(subset=['score_by_indicator', 'score_by_action_area'])
+
+scatter_map = px.scatter_geo(
+    scatter_map_data,
+    locations="country",
+    locationmode="country names",
+    hover_name="country",
+    color="overall_score",
+    size="overall_score",
+    size_max=20,
+    color_continuous_scale="Blues",
+    projection="natural earth",
+    title="Internet Access vs Data Infrastructure by Country",
+    custom_data=["score_by_indicator", "score_by_action_area"]
+)
+
+scatter_map.update_traces(
+    hovertemplate="<b>%{hovertext}</b><br>" +
+                  "Internet Access: %{customdata[0]:.2f}<br>" +
+                  "Data Infrastructure: %{customdata[1]:.2f}<br>" +
+                  "Overall Score: %{marker.color:.2f}<extra></extra>"
+)
+
+scatter_map.update_layout(
+    geo=dict(
+        showframe=False,
+        showcoastlines=True,
+        showland=True,
+        landcolor="LightGray"
+    ),
+    margin={"r": 0, "t": 30, "l": 0, "b": 0}
+)
+
+st.plotly_chart(scatter_map, use_container_width=True)
+

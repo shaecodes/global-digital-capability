@@ -177,3 +177,30 @@ with st.container():
         color_continuous_scale='Blues'
     )
     st.plotly_chart(scatter_fig_internet, use_container_width=True)
+
+# Map: Internet Access by Country
+st.markdown("### 🌐 Internet Access Map")
+map_fig_internet = px.scatter_geo( 
+    filtered_data_internet, 
+    locations="country",
+    locationmode="country names",
+    color="score_by_indicator",
+    hover_name="country",
+    size="score_by_indicator",
+    size_max=20,
+    projection="natural earth",
+    color_continuous_scale="Blues",
+    title="🌎 Internet Access Score by Country"
+)
+map_fig_internet.update_layout(
+    geo=dict(
+        showframe=False,
+        showcoastlines=True,
+        showland=True,
+        landcolor="LightGray",
+        projection_type="natural earth"
+    ),
+    margin={"r": 0, "t": 50, "l": 0, "b": 0}
+)
+st.plotly_chart(map_fig_internet, use_container_width=True)
+

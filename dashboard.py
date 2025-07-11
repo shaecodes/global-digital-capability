@@ -161,17 +161,19 @@ with c4:
 
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data
 
-scatter_fig_internet = px.scatter(
-    filtered_data_internet,
-    x='score_by_action_area',
-    y='score_by_indicator',
-    hover_name='country',
-    title="🔹 Scatter: Data Infrastructure vs Digital Government",
-    labels={
-        'score_by_action_area': 'Data Infrastructure Score',
-        'score_by_indicator': 'Digital Government Score'
-    },
-    color='overall_score',
-    color_continuous_scale='Blues'
-)
-st.plotly_chart(scatter_fig_internet, use_container_width=True)
+with st.container():
+    st.markdown("### 🌐 Internet Access Scatter Plot")
+    scatter_fig_internet = px.scatter(
+        filtered_data_internet,
+        x='score_by_action_area',
+        y='score_by_indicator',
+        hover_name='country',
+        title="🔹 Internet Access: Data Infrastructure vs Digital Government",
+        labels={
+            'score_by_action_area': 'Data Infrastructure Score',
+            'score_by_indicator': 'Digital Government Score'
+        },
+        color='overall_score',
+        color_continuous_scale='Blues'
+    )
+    st.plotly_chart(scatter_fig_internet, use_container_width=True)

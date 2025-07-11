@@ -107,7 +107,7 @@ with c1:
     avg_score = filtered_data.groupby('country')['overall_score'].mean().sort_values(ascending=False).reset_index()
     bar_fig = px.bar(
         avg_score, x='country', y='overall_score',
-        title="🔹 Average Overall Score by Country",
+        title="### Average Overall Score by Country",
         color='overall_score',
         color_continuous_scale='Blues'
     )
@@ -162,8 +162,6 @@ with c4:
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data
 
 # Internet Access Section (Map + Bar Chart by Continent)
-st.markdown("## 🌐 Internet Access Overview")
-
 col_map, col_bar = st.columns(2)
 
 with col_map:

@@ -159,13 +159,13 @@ filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == con
 col_map, col_bar = st.columns(2)
 
 with col_map:
-    st.subheader("📡 Internet Access Map by Country")
     map_fig_internet = px.scatter_geo(
         filtered_data_internet,
         locations="country",
         locationmode="country names",
         color="score_by_indicator",
         hover_name="country",
+        title="📡 Internet Access Map by Country",
         size="score_by_indicator",
         size_max=20,
         projection="natural earth",

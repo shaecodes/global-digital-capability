@@ -201,8 +201,6 @@ with col_bar:
     )
     st.plotly_chart(internet_bar_fig, use_container_width=True)
 
-st.subheader("🔁 Internet Access vs Data Infrastructure")
-
 scatter_infra_vs_internet = px.scatter(
     filtered_data_internet,
     x="score_by_action_area",
@@ -214,7 +212,6 @@ scatter_infra_vs_internet = px.scatter(
         "score_by_indicator": "Internet Access Score"
     },
     color_continuous_scale="Blues",
-    title="Scatter Plot: Internet Access vs Data Infrastructure"
 )
 scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
 scatter_infra_vs_internet.update_layout(margin={"r":0,"t":50,"l":0,"b":0})

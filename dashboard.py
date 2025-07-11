@@ -149,6 +149,7 @@ with c4:
         },
         color='overall_score',
         color_continuous_scale='Blues'
+        title="🌐 Digital Government Score vs Data Infrastructure"
     )
     scatter_fig.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
     st.plotly_chart(scatter_fig, use_container_width=True)
@@ -175,7 +176,7 @@ with col1:
         color='score_by_indicator',
         color_continuous_scale='Blues',
         labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'},
-        title="Avg. Internet Score by Continent"
+        title="🌏 Avg. Internet Score by Continent"
     )
     st.plotly_chart(internet_bar_fig, use_container_width=True)
 
@@ -191,7 +192,7 @@ with col2:
             "score_by_indicator": "Internet Access Score"
         },
         color_continuous_scale="Blues",
-        title="Internet Access vs Data Infrastructure"
+        title="🛜 Internet Access vs Data Infrastructure"
     )
     scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
     st.plotly_chart(scatter_infra_vs_internet, use_container_width=True)

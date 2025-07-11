@@ -163,6 +163,7 @@ with col_map:
     map_fig_internet = px.scatter_geo(
         filtered_data_internet,
         locations="country",
+        title="📊 Internet Access Map by Country",
         locationmode="country names",
         color="score_by_indicator",
         hover_name="country",
@@ -183,7 +184,6 @@ with col_map:
     st.plotly_chart(map_fig_internet, use_container_width=True)
 
 with col_bar:
-    st.subheader("📶 Avg. Internet Access Score by Continent")
     internet_continent_df = (
         filtered_data_internet
         .dropna(subset=['continent'])

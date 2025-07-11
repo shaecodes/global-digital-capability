@@ -3,32 +3,32 @@ import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
 
-st.set_page_config(layout="wide", page_title="Global Digital Capability Dashboard")
+st.set_page_config(layout="wide", page_title="🌐 Global Digital Capability Dashboard")
 
 gdb_data = pd.read_csv("digital_government.csv")
 gdb_data_internet = pd.read_csv("internet_access.csv")
 
 # Sidebar Filters
-st.sidebar.header("Filters")
+st.sidebar.header("🧭 Filters")
 continents = gdb_data['continent'].dropna().astype(str).unique()
-continent_filter = st.sidebar.selectbox("Continent", options=["All"] + sorted(continents))
+continent_filter = st.sidebar.selectbox("🌍 Continent", options=["All"] + sorted(continents))
 filtered_data = gdb_data[gdb_data['continent'] == continent_filter] if continent_filter != "All" else gdb_data
 
 # Main Title
 st.markdown("""
-    <h1 style='text-align: center;'>Global Digital Capability Dashboard</h1>
+    <h1 style='text-align: center;'>🌐 Global Digital Capability Dashboard</h1>
     <hr />
 """, unsafe_allow_html=True)
 
 # KPI Header
 col1, col2, col3, col4 = st.columns(4)
-col1.metric("Total Countries", gdb_data['country'].nunique())
-col2.metric("Filtered Countries", filtered_data['country'].nunique())
-col3.metric("Avg. Overall Score", f"{filtered_data['overall_score'].mean():.2f}")
-col4.metric("Avg. Data Infrastructure Score", f"{filtered_data['score_by_action_area'].mean():.2f}")
+col1.metric("🌎 Total Countries", gdb_data['country'].nunique())
+col2.metric("🗺️ Filtered Countries", filtered_data['country'].nunique())
+col3.metric("📊 Avg. Overall Score", f"{filtered_data['overall_score'].mean():.2f}")
+col4.metric("🧱 Avg. Data Infrastructure", f"{filtered_data['score_by_action_area'].mean():.2f}")
 
 # Map
-st.subheader("Digital Capability Map")
+st.subheader("🗺️ Digital Capability Map")
 map_fig = px.scatter_geo(
     filtered_data,
     locations="country",
@@ -52,30 +52,30 @@ map_fig.update_layout(
 st.plotly_chart(map_fig, use_container_width=True)
 
 # Top and Lowest Performers
-st.subheader("Notable Performers")
+st.subheader("🏅 Notable Performers")
 highest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmax()]
 lowest_score_row = filtered_data.loc[filtered_data['overall_score'].idxmin()]
 
 col_high, col_low = st.columns(2)
 with col_high:
-    st.markdown(f"**Highest Scoring Country: {highest_score_row['country']}**")
+    st.markdown(f"**🥇 Highest Scoring Country: {highest_score_row['country']}**")
     st.markdown(f"""
-    - Overall Score: {highest_score_row['overall_score']}
-    - Digital Government: {highest_score_row['score_by_indicator']}
-    - Data Infrastructure: {highest_score_row['score_by_action_area']}
-    - Governance Foundation: {highest_score_row['score_by_cluster']}
+    - 🌐 Overall Score: {highest_score_row['overall_score']}
+    - 🏛️ Digital Government: {highest_score_row['score_by_indicator']}
+    - 🧱 Data Infrastructure: {highest_score_row['score_by_action_area']}
+    - ⚖️ Governance Foundation: {highest_score_row['score_by_cluster']}
     """)
 with col_low:
-    st.markdown(f"**Lowest Scoring Country: {lowest_score_row['country']}**")
+    st.markdown(f"**🚨 Lowest Scoring Country: {lowest_score_row['country']}**")
     st.markdown(f"""
-    - Overall Score: {lowest_score_row['overall_score']}
-    - Digital Government: {lowest_score_row['score_by_indicator']}
-    - Data Infrastructure: {lowest_score_row['score_by_action_area']}
-    - Governance Foundation: {lowest_score_row['score_by_cluster']}
+    - 🌐 Overall Score: {lowest_score_row['overall_score']}
+    - 🏛️ Digital Government: {lowest_score_row['score_by_indicator']}
+    - 🧱 Data Infrastructure: {lowest_score_row['score_by_action_area']}
+    - ⚖️ Governance Foundation: {lowest_score_row['score_by_cluster']}
     """)
 
 # Country Score Table
-st.subheader("Country Scores")
+st.subheader("📋 Country Scores")
 table_df = (
     filtered_data[[
         'country', 'score_by_action_area', 'score_by_indicator', 'score_by_cluster'
@@ -99,7 +99,7 @@ with c1:
     avg_score = filtered_data.groupby('country')['overall_score'].mean().sort_values(ascending=False).reset_index()
     bar_fig = px.bar(
         avg_score, x='country', y='overall_score',
-        title="Average Overall Score by Country",
+        title="📊 Average Overall Score by Country",
         color='overall_score',
         color_continuous_scale='Blues'
     )
@@ -117,7 +117,7 @@ with c2:
         go.Bar(name='Digital Government', x=stacked_df['country'], y=stacked_df['score_by_indicator']),
         go.Bar(name='Governance Foundation', x=stacked_df['country'], y=stacked_df['score_by_cluster'])
     ])
-    stacked_fig.update_layout(barmode='stack', title='Digital Capability Scores (Stacked)')
+    stacked_fig.update_layout(barmode='stack', title='📊 Digital Capability Scores (Stacked)')
     st.plotly_chart(stacked_fig, use_container_width=True)
 
 # Additional Charts
@@ -129,7 +129,7 @@ with c3:
     continent_bar = px.bar(
         continent_df, x='score_by_action_area', y='continent',
         orientation='h',
-        title="Data Infrastructure by Continent",
+        title="🧱 Avg. Data Infrastructure by Continent",
         labels={'score_by_action_area': 'Average Score'},
         color='score_by_action_area',
         color_continuous_scale='Blues'
@@ -143,7 +143,7 @@ with c4:
         x='score_by_action_area',
         y='score_by_indicator',
         hover_name='country',
-        title="Data Infrastructure vs Digital Government",
+        title="🔎 Data Infrastructure vs Digital Government",
         labels={
             'score_by_action_area': 'Data Infrastructure Score',
             'score_by_indicator': 'Digital Government Score'
@@ -159,7 +159,7 @@ filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == con
 col_map, col_bar = st.columns(2)
 
 with col_map:
-    st.subheader("Internet Access Map by Country")
+    st.subheader("📡 Internet Access Map by Country")
     map_fig_internet = px.scatter_geo(
         filtered_data_internet,
         locations="country",
@@ -183,7 +183,7 @@ with col_map:
     st.plotly_chart(map_fig_internet, use_container_width=True)
 
 with col_bar:
-    st.subheader("Average Internet Access Score by Continent")
+    st.subheader("📶 Avg. Internet Access Score by Continent")
     internet_continent_df = (
         filtered_data_internet
         .dropna(subset=['continent'])

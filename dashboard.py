@@ -201,43 +201,22 @@ with col_bar:
     )
     st.plotly_chart(internet_bar_fig, use_container_width=True)
 
-st.subheader("📍 Internet Access vs Data Infrastructure (Scatter Map)")
+st.subheader("🔁 Internet Access vs Data Infrastructure")
 
-scatter_map_data = filtered_data_internet.copy()
-
-# Drop countries without data in either field
-scatter_map_data = scatter_map_data.dropna(subset=['score_by_indicator', 'score_by_action_area'])
-
-scatter_map = px.scatter_geo(
-    scatter_map_data,
-    locations="country",
-    locationmode="country names",
-    hover_name="country",
+scatter_infra_vs_internet = px.scatter(
+    filtered_data_internet,
+    x="score_by_action_area",
+    y="score_by_indicator",
     color="overall_score",
-    size="overall_score",
-    size_max=20,
+    hover_name="country",
+    labels={
+        "score_by_action_area": "Data Infrastructure Score",
+        "score_by_indicator": "Internet Access Score"
+    },
     color_continuous_scale="Blues",
-    projection="natural earth",
-    title="Internet Access vs Data Infrastructure by Country",
-    custom_data=["score_by_indicator", "score_by_action_area"]
+    title="Scatter Plot: Internet Access vs Data Infrastructure"
 )
+scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
+scatter_infra_vs_internet.update_layout(margin={"r":0,"t":50,"l":0,"b":0})
 
-scatter_map.update_traces(
-    hovertemplate="<b>%{hovertext}</b><br>" +
-                  "Internet Access: %{customdata[0]:.2f}<br>" +
-                  "Data Infrastructure: %{customdata[1]:.2f}<br>" +
-                  "Overall Score: %{marker.color:.2f}<extra></extra>"
-)
-
-scatter_map.update_layout(
-    geo=dict(
-        showframe=False,
-        showcoastlines=True,
-        showland=True,
-        landcolor="LightGray"
-    ),
-    margin={"r": 0, "t": 30, "l": 0, "b": 0}
-)
-
-st.plotly_chart(scatter_map, use_container_width=True)
-
+st.plotly_chart(scatter_infra_vs_internet, use_container_width=True)

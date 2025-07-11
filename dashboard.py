@@ -113,9 +113,9 @@ with c2:
         'score_by_cluster': 'mean'
     }).reset_index()
     stacked_fig = go.Figure(data=[
-        go.Bar(name='Data Infrastructure', x=stacked_df['country'], y=stacked_df['score_by_action_area']),
-        go.Bar(name='Digital Government', x=stacked_df['country'], y=stacked_df['score_by_indicator']),
-        go.Bar(name='Governance Foundation', x=stacked_df['country'], y=stacked_df['score_by_cluster'])
+        go.Bar(name='Data Infrastructure', x=stacked_df['country'], y=stacked_df['score_by_action_area'], marker_color='#3399FF'),
+        go.Bar(name='Digital Government', x=stacked_df['country'], y=stacked_df['score_by_indicator'], marker_color='#0066CC'),
+        go.Bar(name='Governance Foundation', x=stacked_df['country'], y=stacked_df['score_by_cluster'], marker_color='#003366')
     ])
     stacked_fig.update_layout(barmode='stack', title='📊 Digital Capability Scores (Stacked)')
     st.plotly_chart(stacked_fig, use_container_width=True)

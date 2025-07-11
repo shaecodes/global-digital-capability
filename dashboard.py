@@ -161,46 +161,56 @@ with c4:
 
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data
 
-with st.container():
-    st.markdown("### 🌐 Internet Access Scatter Plot")
-    scatter_fig_internet = px.scatter(
-        filtered_data_internet,
-        x='score_by_action_area',
-        y='score_by_indicator',
-        hover_name='country',
-        title="🔹 Internet Access: Data Infrastructure vs Digital Government",
-        labels={
-            'score_by_action_area': 'Data Infrastructure Score',
-            'score_by_indicator': 'Internet Access Score'
-        },
-        color='overall_score',
-        color_continuous_scale='Blues'
+# Internet Access Section (Map + Bar Chart by Continent)
+st.markdown("## 🌐 Internet Access Overview")
+
+col_map, col_bar = st.columns(2)
+
+with col_map:
+    st.markdown("### 🗺️ Internet Access Map by Country")
+    map_fig_internet = px.scatter_geo( 
+        filtered_data_internet, 
+        locations="country",
+        locationmode="country names",
+        color="score_by_indicator",
+        hover_name="country",
+        size="score_by_indicator",
+        size_max=20,
+        projection="natural earth",
+        color_continuous_scale="Blues",
+        title="🌍 Internet Access Score by Country"
     )
-    st.plotly_chart(scatter_fig_internet, use_container_width=True)
+    map_fig_internet.update_layout(
+        geo=dict(
+            showframe=False,
+            showcoastlines=True,
+            showland=True,
+            landcolor="LightGray",
+            projection_type="natural earth"
+        ),
+        margin={"r": 0, "t": 50, "l": 0, "b": 0}
+    )
+    st.plotly_chart(map_fig_internet, use_container_width=True)
 
-# Map: Internet Access by Country
-st.markdown("### 🌐 Internet Access Map")
-map_fig_internet = px.scatter_geo( 
-    filtered_data_internet, 
-    locations="country",
-    locationmode="country names",
-    color="score_by_indicator",
-    hover_name="country",
-    size="score_by_indicator",
-    size_max=20,
-    projection="natural earth",
-    color_continuous_scale="Blues",
-    title="🌎 Internet Access Score by Country"
-)
-map_fig_internet.update_layout(
-    geo=dict(
-        showframe=False,
-        showcoastlines=True,
-        showland=True,
-        landcolor="LightGray",
-        projection_type="natural earth"
-    ),
-    margin={"r": 0, "t": 50, "l": 0, "b": 0}
-)
-st.plotly_chart(map_fig_internet, use_container_width=True)
+with col_bar:
+    st.markdown("### 📊 Average Internet Access Score by Continent")
+    internet_continent_df = (
+        filtered_data_internet
+        .dropna(subset=['continent'])
+        .groupby('continent')['score_by_indicator']
+        .mean()
+        .reset_index()
+    )
 
+    internet_bar_fig = px.bar(
+        internet_continent_df,
+        x='score_by_indicator',
+        y='continent',
+        orientation='h',
+        color='score_by_indicator',
+        color_continuous_scale='Blues',
+        labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'},
+        title='🔹 Avg. Internet Access Score by Continent'
+    )
+
+    st.plotly_chart(internet_bar_fig, use_container_width=True)

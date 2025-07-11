@@ -152,6 +152,7 @@ with c4:
     )
     st.plotly_chart(scatter_fig, use_container_width=True)
 
+# Internet Access Section
 filtered_data_internet = gdb_data_internet[gdb_data_internet['continent'] == continent_filter] if continent_filter != "All" else gdb_data_internet
 
 internet_continent_df = (
@@ -161,48 +162,30 @@ internet_continent_df = (
     .mean()
     .reset_index()
 )
+internet_bar_fig = px.bar(
+    internet_continent_df,
+    x='score_by_indicator',
+    y='continent',
+    orientation='h',
+    color='score_by_indicator',
+    color_continuous_scale='Blues',
+    labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'}
+)
+st.plotly_chart(internet_bar_fig, use_container_width=True)
 
-col1, col2, col3 = st.columns(3)
+scatter_infra_vs_internet = px.scatter(
+    filtered_data_internet,
+    x="score_by_action_area",
+    y="score_by_indicator",
+    color="overall_score",
+    hover_name="country",
+    labels={
+        "score_by_action_area": "Data Infrastructure Score",
+        "score_by_indicator": "Internet Access Score"
+    },
+    color_continuous_scale="Blues",
+)
+scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
+scatter_infra_vs_internet.update_layout(margin={"r":0,"t":50,"l":0,"b":0})
 
-with col1:
-    internet_bar_fig = px.bar(
-        internet_continent_df,
-        x='score_by_indicator',
-        y='continent',
-        orientation='h',
-        color='score_by_indicator',
-        color_continuous_scale='Blues',
-        labels={'score_by_indicator': 'Avg. Internet Score', 'continent': 'Continent'},
-        title="Avg. Internet Score by Continent"
-    )
-    st.plotly_chart(internet_bar_fig, use_container_width=True)
-
-with col2:
-    scatter_infra_vs_internet = px.scatter(
-        filtered_data_internet,
-        x="score_by_action_area",
-        y="score_by_indicator",
-        color="overall_score",
-        hover_name="country",
-        labels={
-            "score_by_action_area": "Data Infrastructure Score",
-            "score_by_indicator": "Internet Access Score"
-        },
-        color_continuous_scale="Blues",
-        title="Internet Access vs Data Infrastructure"
-    )
-    scatter_infra_vs_internet.update_traces(marker=dict(size=12, opacity=0.7), selector=dict(mode='markers'))
-    scatter_infra_vs_internet.update_layout(margin={"r":0,"t":50,"l":0,"b":0})
-    st.plotly_chart(scatter_infra_vs_internet, use_container_width=True)
-
-with col3:
-    hist_fig = px.histogram(
-        filtered_data_internet,
-        x="score_by_indicator",
-        nbins=20,
-        labels={"score_by_indicator": "Internet Access Score"},
-        color_discrete_sequence=['#3399FF'],
-        title="Internet Access Score Distribution"
-    )
-    hist_fig.update_layout(margin={"r":0,"t":50,"l":0,"b":0})
-    st.plotly_chart(hist_fig, use_container_width=True)
+st.plotly_chart(scatter_infra_vs_internet, use_container_width=True)

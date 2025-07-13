@@ -67,9 +67,6 @@ From the analysis:
 These findings reinforce the Barometer's conclusion that while **technology access (like internet)** is critical, **institutional readiness** and **governance maturity** play an equally important role in digital capability.
 
 ## 🛠️ Technologies Used
-
-* **Python + Streamlit** for interactive web app interface.
-* **Plotly Express** and **Graph Objects** for visualizations.
 * **Pandas** for data manipulation.
 * **Power BI Desktop** (for supplementary dashboard prototyping and exploration).
 

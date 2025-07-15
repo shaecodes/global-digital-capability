@@ -2,7 +2,7 @@
 
 This dashboard provides a comprehensive visualization of global disparities and strengths in digital capability, drawing on data from the **Global Data Barometer 2025**. It highlights how countries perform across key indicators such as **Data Infrastructure**, **Digital Government**, **Governance Foundation**, and **Internet Access**, enabling evidence-based discussions around digital inclusion, institutional capacity, and the enabling environment for data use.
 
-[Digital Capability Dashboard.pdf](https://github.com/user-attachments/files/21227895/Digital.Capability.Dashboard.pdf)
+![Image](https://github.com/user-attachments/assets/f4030b1d-cc4d-4c41-9083-93427deb0949)
 
 ## 📊 Purpose
 
